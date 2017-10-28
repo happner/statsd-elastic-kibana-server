@@ -2,12 +2,18 @@
 
 Docker Statsd / ElasticSearch / Kibana Server
 
-### start
+### start elasticsearch and kibana
 
 see docker-compose.yml
 
 ```
 docker-compose up
+```
+
+### start example monitored process
+
+```
+bin/example-monitored-process
 ```
 
 ### open kibana in browser

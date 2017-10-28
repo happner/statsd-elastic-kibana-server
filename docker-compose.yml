@@ -6,6 +6,7 @@ services:
     ports:
       - '9200:9200'
       - '9300:9300'
+    restart: 'always'
     environment:
       xpack.security.enabled: 'false'
     # deploy:  # not supported by compose
@@ -17,6 +18,7 @@ services:
     image: docker.elastic.co/kibana/kibana:5.6.3
     ports:
       - '5601:5601'
+    restart: 'always'
     environment:
       xpack.security.enabled: 'false'
       xpack.monitoring.ui.container.elasticsearch.enabled: 'false'
@@ -30,6 +32,7 @@ services:
     ports:
       - '8126:8126'
       - '8125:8125/udp'
+    restart: 'always'
     # deploy:
     #   restart_policy:
     #     delay: 20s
