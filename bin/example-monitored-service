@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+console.log('CHECK PER SECONDS');
+
+var GAUGE_1_LOOPTIME = 20;
+var GAUGE_2_LOOPTIME = 20;
+var COUNTER_1_LOOPTIME = 20;
+
+var StatsdClient = require('statsd-client');
+var client = new StatsdClient({host: 'localhost'});
+
+function gauge1() {
+  client.gauge('example.gauge1', Math.round(Math.random() * 1000));
+  setTimeout(gauge1, GAUGE_1_LOOPTIME);
+}
+
+function gauge2() {
+  client.gauge('example.gauge2', Math.round(Math.random() * 1000));
+  setTimeout(gauge2, GAUGE_2_LOOPTIME);
+}
+
+function counter1() {
+  client.increment('example.counter1');
+  setTimeout(counter1, Math.round(Math.random() * COUNTER_1_LOOPTIME));
+}
+
+function counter2() {
+  client.increment('example.counter2');
+  setTimeout(counter2, 999);
+}
+
+gauge1();
+gauge2();
+counter1();
+counter2();

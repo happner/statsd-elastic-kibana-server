@@ -1,0 +1,26 @@
+{
+  "name": "statsd-elastic-kibana-server",
+  "version": "1.0.0",
+  "description": "Docker Statsd / ElasticSearch / Kibana Server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node_modules/.bin/statsd config/statsd.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/happner/statsd-elastic-kibana-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/happner/statsd-elastic-kibana-server/issues"
+  },
+  "homepage": "https://github.com/happner/statsd-elastic-kibana-server#readme",
+  "dependencies": {
+    "request": "^2.83.0",
+    "statsd": "^0.8.0",
+    "statsd-client": "^0.4.0"
+  }
+}
