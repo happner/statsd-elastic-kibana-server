@@ -13,6 +13,7 @@ docker-compose up
 ### start example monitored process
 
 ```
+npm install
 bin/example-monitored-process
 ```
 
