@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-console.log('CHECK PER SECONDS');
-
 var GAUGE_1_LOOPTIME = 20;
 var GAUGE_2_LOOPTIME = 20;
 var COUNTER_1_LOOPTIME = 20;
