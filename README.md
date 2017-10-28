@@ -2,11 +2,12 @@
 
 Docker Statsd / ElasticSearch / Kibana Server
 
-### start elasticsearch and kibana
+### start elasticsearch and kibana and statsd
 
 see docker-compose.yml
 
 ```
+docker-compose build
 docker-compose up
 ```
 
