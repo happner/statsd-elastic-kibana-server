@@ -1,6 +1,6 @@
 # statsd-elastic-kibana-server
 
-"Packaged" Docker Statsd / ElasticSearch / Kibana Server
+Docker Statsd / ElasticSearch / Kibana Server
 
 ### start
 
