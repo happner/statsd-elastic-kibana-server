@@ -1,5 +1,5 @@
 {
-  flushInterval: 1000,
+  flushInterval: 10000,
   backends: ["../../lib/elastic-backend"],
 
   // elasticsearchUrl: 'http://localhost:9200', // when on host
