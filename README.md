@@ -37,3 +37,9 @@ https://www.elastic.co/guide/en/kibana/current/timelion-create.html
 .es(index=statsd,timefield='timestamp',metric='avg:example.gauge1').lines(width=1.5).color(#1E90FF).label('Gauge1'), .es(index=statsd, timefield='timestamp', metric='avg:example.gauge2').lines(fill=1,width=0.5).color(gray).label('Gauge2').title('Gauges')
 
 ```
+
+### Turn contianers off
+
+```
+docker-compose down
+```
