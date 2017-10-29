@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+var LIKELY_SMALL_INCREMENT = 5;
+var UNLIKELY_INCREMENT_NEGATED = 30
 var GAUGE_1_LOOPTIME = 20;
 var GAUGE_2_LOOPTIME = 20;
 var COUNTER_1_LOOPTIME = 20;
@@ -7,13 +9,25 @@ var COUNTER_1_LOOPTIME = 20;
 var StatsdClient = require('statsd-client');
 var client = new StatsdClient({host: 'localhost'});
 
+var guage1Data = {
+  value: Math.round(Math.random() * 1000),
+  increment: 1
+};
+
+var guage2Data = {
+  value: Math.round(Math.random() * 1000),
+  increment: 1
+};
+
 function gauge1() {
-  client.gauge('example.gauge1', Math.round(Math.random() * 1000));
+  nextValue(guage1Data)
+  client.gauge('example.gauge1', guage1Data.value);
   setTimeout(gauge1, GAUGE_1_LOOPTIME);
 }
 
 function gauge2() {
-  client.gauge('example.gauge2', Math.round(Math.random() * 1000));
+  nextValue(guage2Data)
+  client.gauge('example.gauge2', guage2Data.value);
   setTimeout(gauge2, GAUGE_2_LOOPTIME);
 }
 
@@ -25,6 +39,32 @@ function counter1() {
 function counter2() {
   client.increment('example.counter2');
   setTimeout(counter2, 999);
+}
+
+function nextValue(guage1Data) {
+  var increment = 1;
+  // likelyhood of small increment
+  var ls = Math.round(Math.random() * LIKELY_SMALL_INCREMENT);
+  var cd = Math.round(Math.random() * UNLIKELY_INCREMENT_NEGATED);
+
+  for (var i = 0; i < ls; i++) {
+    var candidate = Math.random();
+    if (candidate < increment) increment = candidate;
+  }
+
+  if (guage1Data.increment >= 0) {
+    if (cd == 1) increment = -increment;
+  } else {
+    if (cd != 1) increment = -increment;
+  }
+
+  guage1Data.value += increment;
+  guage1Data.increment = increment;
+
+  if (guage1Data.value <= 0) {
+    guage1Data.value = 0;
+    guage1Data.increment = 1;
+  }
 }
 
 gauge1();

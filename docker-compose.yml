@@ -33,6 +33,11 @@ services:
       - '8126:8126'
       - '8125:8125/udp'
     restart: 'always'
+    environment:
+      FLUSH_INTERVAL: 10000
+      ELASTICSEARCH_URL: 'http://elasticsearch:9200'
+      ELASTICSEARCH_INDEX: 'statsd'
+      ELASTICSEARCH_TYPE: 'metric'
     # deploy:
     #   restart_policy:
     #     delay: 20s
